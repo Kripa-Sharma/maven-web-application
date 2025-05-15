@@ -1,298 +1,156 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	
-	<groupId>com.mt</groupId>
-	<artifactId>maven-web-application</artifactId>
-	<packaging>war</packaging>
-	<version>0.0.3</version>
-	
-	<name>maven-web-application</name>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<description>Maven Web Project for Java Project</description>
+    <modelVersion>4.0.0</modelVersion>
 
-	<organization>
-		<name> Clahan Technologies</name>
-		<url>http://ClahanTechnologies.com/</url>
-	</organization>
+    <groupId>com.mt</groupId>
+    <artifactId>maven-web-application</artifactId>
+    <version>0.0.3</version>
+    <packaging>war</packaging>
 
-	<properties>
-		<jdk.version>1.8</jdk.version>
-		<spring.version>5.1.2.RELEASE</spring.version>
-		<junit.version>4.11</junit.version>
-		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http://54.202.184.148:9000</sonar.host.url>
-		<sonar.login>admin</sonar.login>
-		<sonar.password>hellosonar</sonar.password> 
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <name>maven-web-application</name>
+    <description>Maven Web Project for Java Project</description>
 
-	</properties>
+    <organization>
+        <name>Clahan Technologies</name>
+        <url>http://ClahanTechnologies.com/</url>
+    </organization>
 
-	<dependencies>
-		
-		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20160212</version>
-		</dependency>
-		
-		<!-- test dependencies -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
+    <properties>
+        <jdk.version>1.8</jdk.version>
+        <spring.version>5.1.2.RELEASE</spring.version>
+        <junit.version>4.13.2</junit.version>
+        <mockito.version>3.12.4</mockito.version>
+        <log4j.version>1.2.17</log4j.version> <!-- ⚠️ Consider replacing this with Log4j2 or SLF4J -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
 
-		
+    <dependencies>
+        <!-- JSON -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160212</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>1.9.5</version>
-			<scope>test</scope>
-		</dependency>
+        <!-- JUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
 
-		<!-- compile dependencies -->
+        <!-- Mockito -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-    		<groupId>org.springframework</groupId>
-    		<artifactId>spring-web</artifactId>
-    		<version>${spring.version}</version>
-  		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		
-		<!-- provided dependencies -->
+        <!-- Spring Framework -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-			<scope>provided</scope>
-		</dependency>
-		
-	</dependencies>
-	
-	<distributionManagement>
-	
-	    <repository>
-	      <id>nexus</id>
-	      <name>Maven-Web-Application-Release</name>
-	      <url>http://65.0.205.54:8081/repository/Maven-Web-Application-Release/</url>
-	    </repository>
-	    
-	    <snapshotRepository>
-	      <id>nexus</id>
-	      <name>Maven-Web-Snapshot-Repository</name>
-	      <url>http://65.0.205.54:8081/repository/Maven-Web-Application-Snapshot/</url>
-	    </snapshotRepository>
-	    
-	</distributionManagement>
-	
-	<build>
-		<finalName>maven-web-application</finalName>
-		
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-				</configuration>
-			</plugin>
+        <!-- Servlet API -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
-			<plugin>
-				<groupId>org.eclipse.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>9.2.11.v20150529</version>
-				<configuration>
-					<scanIntervalSeconds>10</scanIntervalSeconds>
-					<webApp>
-						<contextPath>/maven-web-application</contextPath>
-					</webApp>
-				</configuration>
-			</plugin>
+    <build>
+        <finalName>maven-web-application</finalName>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.9</version>
-				<configuration>
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>true</downloadJavadocs>
-					<wtpversion>2.0</wtpversion>
-					<wtpContextName>maven-web-application</wtpContextName>
-				</configuration>
-			</plugin>
-			<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	
-	<groupId>com.mt</groupId>
-	<artifactId>maven-web-application</artifactId>
-	<packaging>war</packaging>
-	<version>0.0.3</version>
-	
-	<name>maven-web-application</name>
+        <plugins>
+            <!-- Java Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
 
-	<description>Maven Web Project for Java Project</description>
+            <!-- Jetty Plugin for local testing -->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.4.50.v20221201</version>
+                <configuration>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <webApp>
+                        <contextPath>/maven-web-application</contextPath>
+                    </webApp>
+                </configuration>
+            </plugin>
 
-	<organization>
-		<name> Clahan Technologies</name>
-		<url>http://ClahanTechnologies.com/</url>
-	</organization>
+            <!-- JaCoCo for code coverage -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.8</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
-	<properties>
-		<jdk.version>1.8</jdk.version>
-		<spring.version>5.1.2.RELEASE</spring.version>
-		<junit.version>4.11</junit.version>
-		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http://54.202.184.148:9000</sonar.host.url>
-		<sonar.login>admin</sonar.login>
-		<sonar.password>hellosonar</sonar.password> 
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+            <!-- SonarQube Plugin -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.9.1.2184</version>
+            </plugin>
+        </plugins>
+    </build>
 
-	</properties>
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <name>Maven-Web-Application-Release</name>
+            <url>http://65.0.205.54:8081/repository/Maven-Web-Application-Release/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>Maven-Web-Snapshot-Repository</name>
+            <url>http://65.0.205.54:8081/repository/Maven-Web-Application-Snapshot/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
-	<dependencies>
-		
-		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20160212</version>
-		</dependency>
-		
-		<!-- test dependencies -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		
-
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>1.9.5</version>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- compile dependencies -->
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-    		<groupId>org.springframework</groupId>
-    		<artifactId>spring-web</artifactId>
-    		<version>${spring.version}</version>
-  		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		
-		<!-- provided dependencies -->
-
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-			<scope>provided</scope>
-		</dependency>
-		
-	</dependencies>
-	
-	<distributionManagement>
-	
-	    <repository>
-	      <id>nexus</id>
-	      <name>Maven-Web-Application-Release</name>
-	      <url>http://65.0.205.54:8081/repository/Maven-Web-Application-Release/</url>
-	    </repository>
-	    
-	    <snapshotRepository>
-	      <id>nexus</id>
-	      <name>Maven-Web-Snapshot-Repository</name>
-	      <url>http://65.0.205.54:8081/repository/Maven-Web-Application-Snapshot/</url>
-	    </snapshotRepository>
-	    
-	</distributionManagement>
-	
-	<build>
-		<finalName>maven-web-application</finalName>
-		
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.eclipse.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>9.2.11.v20150529</version>
-				<configuration>
-					<scanIntervalSeconds>10</scanIntervalSeconds>
-					<webApp>
-						<contextPath>/maven-web-application</contextPath>
-					</webApp>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.9</version>
-				<configuration>
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>true</downloadJavadocs>
-					<wtpversion>2.0</wtpversion>
-					<wtpContextName>maven-web-application</wtpContextName>
-				</configuration>
-			</plugin>
-			
-</plugins>
-	</build>
-	
-	
-</project>
-			
-</plugins>
-	</build>
-	
-	
 </project>
